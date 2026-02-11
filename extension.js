@@ -1,25 +1,27 @@
-const vscode = require('vscode')
+const vscode = require('vscode');
 
 async function activate(context) {
-    // This is the original command, now templated.
-    // Replace with your command's logic.
-    let disposableSearch = vscode.commands.registerCommand('TODO_extension_id.TODO_command_name', async () => {
-        vscode.window.showInformationMessage('Hello from TODO_command_title!');
-    });
-    context.subscriptions.push(disposableSearch);
-
-    // This is the new command to insert 'hello'.
-    let disposableInsert = vscode.commands.registerCommand('TODO_extension_id.insert_hello', () => {
-        const editor = vscode.window.activeTextEditor;
-        if (editor) {
-            editor.edit(editBuilder => {
-                editBuilder.insert(editor.selection.active, 'hello');
+    context.subscriptions.push(vscode.commands.registerCommand('favorite-subdir.setFavorite', async (uri) => {
+        if (!uri || !uri.fsPath) {
+            const uris = await vscode.window.showOpenDialog({
+                canSelectFiles: false,
+                canSelectFolders: true,
+                canSelectMany: false,
+                title: 'Select Favorite Terminal Directory'
             });
+            if (uris && uris[0]) uri = uris[0];
+            else return;
         }
-    });
-    context.subscriptions.push(disposableInsert);
+        await vscode.workspace.getConfiguration('terminal.integrated').update('cwd', uri.fsPath, vscode.ConfigurationTarget.Workspace);
+        vscode.window.showInformationMessage(`Terminal CWD set to: ${uri.fsPath}`);
+    }));
+
+    context.subscriptions.push(vscode.commands.registerCommand('favorite-subdir.clearFavorite', async () => {
+        await vscode.workspace.getConfiguration('terminal.integrated').update('cwd', undefined, vscode.ConfigurationTarget.Workspace);
+        vscode.window.showInformationMessage('Favorite Terminal Directory cleared.');
+    }));
 }
 
-function deactivate() { }
+function deactivate() {}
 
-module.exports = { activate, deactivate }
+module.exports = { activate, deactivate };

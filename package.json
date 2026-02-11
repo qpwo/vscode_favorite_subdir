@@ -1,18 +1,17 @@
 {
-  "name": "todo-extension-id",
-  "displayName": "TODO_extension_display_name",
-  "description": "TODO_description",
+  "name": "favorite-subdir",
+  "displayName": "Favorite Subdir",
+  "description": "Right click a folder to make it the default terminal directory.",
   "version": "0.0.1",
-  "publisher": "todo-username",
+  "publisher": "qpwo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TODO_username/TODO_repo_name.git"
+    "url": "https://github.com/qpwo/vscode_favorite_subdir.git"
   },
   "license": "MIT",
   "engines": {
     "vscode": "^1.80.0"
   },
-  "icon": "icon.png",
   "categories": [
     "Other"
   ],
@@ -20,14 +19,23 @@
   "contributes": {
     "commands": [
       {
-        "command": "TODO_extension_id.TODO_command_name",
-        "title": "TODO_command_title"
+        "command": "favorite-subdir.setFavorite",
+        "title": "Set as Favorite Terminal Directory"
       },
       {
-        "command": "TODO_extension_id.insert_hello",
-        "title": "Insert Hello"
+        "command": "favorite-subdir.clearFavorite",
+        "title": "Clear Favorite Terminal Directory"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "favorite-subdir.setFavorite",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "devDependencies": {
     "@vscode/vsce": "^3.6.0"
