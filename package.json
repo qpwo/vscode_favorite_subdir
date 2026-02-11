@@ -1,7 +1,7 @@
 {
   "name": "favorite-subdir",
-  "displayName": "Favorite Subdir",
-  "description": "Right click a folder to make it the default terminal directory.",
+  "displayName": "Favorite Subdir -- pin terminal to directory",
+  "description": "Right click a folder to make it the default terminal directory. New terminals open in that folder.",
   "version": "0.0.1",
   "publisher": "qpwo",
   "repository": {
@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.48.0"
   },
   "categories": [
     "Other"
@@ -39,5 +39,11 @@
   },
   "devDependencies": {
     "@vscode/vsce": "^3.6.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@vscode/vsce-sign",
+      "keytar"
+    ]
   }
 }

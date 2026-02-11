@@ -1,4 +1,4 @@
-# Favorite Subdir
+# Favorite Subdir -- pin terminal to directory
 
 Right click a folder in the explorer to make it the default directory for new terminals.
 
