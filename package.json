@@ -3,6 +3,7 @@
   "displayName": "Favorite Subdir -- pin terminal to directory",
   "description": "Right click a folder to make it the default terminal directory. New terminals open in that folder.",
   "version": "0.0.1",
+  "icon": "icon.png",
   "publisher": "qpwo",
   "repository": {
     "type": "git",

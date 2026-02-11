@@ -11,3 +11,6 @@ Right click a folder in the explorer to make it the default directory for new te
 To clear the setting:
 1. Open Command Palette (`Cmd+Shift+P`).
 2. Run **Clear Favorite Terminal Directory**.
+
+
+![icon](https://raw.githubusercontent.com/qpwo/vscode_favorite_subdir/main/icon.png)
