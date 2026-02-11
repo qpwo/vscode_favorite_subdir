@@ -16,6 +16,10 @@
   "categories": [
     "Other"
   ],
+  "activationEvents": [
+    "onCommand:favorite-subdir.setFavorite",
+    "onCommand:favorite-subdir.clearFavorite"
+  ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
